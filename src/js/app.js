@@ -12,6 +12,7 @@ function onInputChange(event) {
 
     socket.emit('knob movement', {
         name: this.name,
+        channel: this.dataset.channel,
         value: this.value
     });
 }
