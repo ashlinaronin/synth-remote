@@ -15,6 +15,7 @@ io.on('connection', socket => {
     socket.on('knob movement', msg => {
         midiConnector.playNote(parseInt(msg.channel), parseInt(msg.value));
         console.log('msg: ', msg);
+        io.emit('knob movement', msg);
     });
 
     socket.on('disconnect', () => {

@@ -1,4 +1,4 @@
-const socket = io('localhost:5000');
+const socket = io('10.0.1.18:5000');
 
 const inputs = document.querySelectorAll('input.cv');
 
@@ -15,4 +15,19 @@ function onInputChange(event) {
         channel: this.dataset.channel,
         value: this.value
     });
+
+    socket.on('knob movement', msg => {
+        const thisKnob = findChannelInput(msg.channel);
+
+        if ((thisKnob.value - msg.value) < 5) return;
+        thisKnob.value = msg.value;
+    });
+}
+
+function findChannelInput(channelNumber) {
+    return Array.from(inputs)
+        .find(input => {
+            debugger;
+            return input.dataset.channel === channelNumber;
+        });
 }
