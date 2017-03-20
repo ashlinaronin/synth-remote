@@ -1,4 +1,4 @@
-const socket = io('10.0.1.18:5000');
+const socket = io('localhost:5000');
 
 const inputs = document.querySelectorAll('input.cv');
 

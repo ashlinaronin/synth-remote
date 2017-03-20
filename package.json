@@ -4,7 +4,8 @@
   "description": "web interface to play a werkstatt in the synth library remotely",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "start": "node index.js && gulp && ngrok http 4005"
   },
   "author": "ashlin aronin",
   "license": "ISC",
