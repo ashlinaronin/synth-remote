@@ -26,8 +26,5 @@ function onInputChange(event) {
 
 function findChannelInput(channelNumber) {
     return Array.from(inputs)
-        .find(input => {
-            debugger;
-            return input.dataset.channel === channelNumber;
-        });
+        .find(input => input.dataset.channel === channelNumber);
 }
