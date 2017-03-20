@@ -5,16 +5,13 @@ body {
 }
 
 h1 {
-  //flex: 1;
   margin: 0 auto;
   text-align: center;
 }
 
 
 .controls {
-  //flex: 1;
   display: flex;
-  //width: 50%;
   flex-wrap: wrap;
   padding: 0;
 
@@ -22,7 +19,6 @@ h1 {
     flex: 1;
     flex-basis: 300px;
     padding: 20px;
-
     display: flex;
 
     label {
