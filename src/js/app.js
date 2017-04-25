@@ -11,6 +11,10 @@ function initializeSlider(input) {
         range: {
             'min': 0,
             'max': 127
+        },
+        format: {
+            to: value => Math.ceil(value),
+            from: value => value.toString()
         }
     });
 
