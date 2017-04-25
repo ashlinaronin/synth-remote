@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha",
-    "start": "node index.js && gulp && ngrok http 4005"
+    "start": "node index.js & gulp & ngrok http 4005"
   },
   "author": "ashlin aronin",
   "license": "ISC",
