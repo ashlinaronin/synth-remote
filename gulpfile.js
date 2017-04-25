@@ -5,12 +5,16 @@ var del = require('del');
 
 var paths = {
     mainScripts: 'src/js/**/*.js',
-    sass: 'src/sass/*.scss',
+    sass: [
+        'lib/noUiSlider.9.2.0/nouislider.css',
+        'src/sass/*.scss',
+    ],
     html: 'src/*.html',
     images: 'src/img/*.*',
     libScripts: [
         'node_modules/osc/dist/osc-browser.js',
-        'node_modules/socket.io-client/socket.io.js'
+        'node_modules/socket.io-client/socket.io.js',
+        'lib/noUiSlider.9.2.0/nouislider.js'
     ]
 };
 

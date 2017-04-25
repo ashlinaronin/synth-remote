@@ -1,19 +1,27 @@
 const socket = io('localhost:5000');
+const inputs = document.querySelectorAll('.cv');
 
-const inputs = document.querySelectorAll('input.cv');
+inputs.forEach(input => initializeSlider(input));
 
-inputs.forEach(input => {
-   input.addEventListener('change', onInputChange);
-   input.addEventListener('mousemove', onInputChange);
-});
+function initializeSlider(input) {
+    noUiSlider.create(input, {
+        start: 63,
+        behaviour: 'tap',
+        connect: [false, true],
+        range: {
+            'min': 0,
+            'max': 127
+        }
+    });
 
-function onInputChange(event) {
-    if (event.buttons === 0) return;
+    input.noUiSlider.on('update', onSliderUpdate);
+}
 
+function onSliderUpdate(values) {
     socket.emit('knob movement', {
-        name: this.name,
-        channel: this.dataset.channel,
-        value: this.value
+        name: this.target.dataset.parameter,
+        channel: this.target.dataset.channel,
+        value: values[0]
     });
 
     socket.on('knob movement', msg => {

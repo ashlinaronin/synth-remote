@@ -2,6 +2,7 @@
 <html>
     <head>
         <title>synth-remote</title>
+        <link rel="stylesheet" href="css/nouislider.css">
         <link rel="stylesheet" href="css/main.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
@@ -11,24 +12,21 @@
         <div class="controls">
             <div class="control">
                 <label>volume</label>
-                <input type="range" class="cv" name="volume" data-channel="0">
+                <div class="cv" data-parameter="volume" data-channel="0"></div>
             </div>
             <div class="control">
                 <label>frequency</label>
-                <input type="range" class="cv" name="frequency" data-channel="1">
+                <div class="cv" data-parameter="frequency" data-channel="1"></div>
             </div>
             <div class="control">
                 <label>filter freq</label>
-                <input type="range" class="cv" name="filter freq" data-channel="2">
+                <div class="cv" data-parameter="filter freq" data-channel="2"></div>
             </div>
             <div class="control">
                 <label>filter res</label>
-                <input type="range" class="cv" name="filter res" data-channel="3">
+                <div class="cv" data-parameter="filter res" data-channel="3"></div>
             </div>
         </div>
-
-
-
 
         <script src="js/lib.js"></script>
         <script src="js/app.js"></script>
