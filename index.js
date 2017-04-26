@@ -14,11 +14,11 @@ io.on('connection', socket => {
         midiConnector.playNote(parseInt(msg.channel), parseInt(msg.value));
         console.log('msg: ', msg);
 
-        if (typeof values[msg.channel] !== 'undefined') {
-            if (Math.abs(msg.value - values[msg.channel]) > 5) {
-                io.emit('knob movement', msg);
-            }
-        }
+        // if (typeof values[msg.channel] !== 'undefined') {
+        //     if (Math.abs(msg.value - values[msg.channel]) > 5) {
+        //         io.emit('knob movement', msg);
+        //     }
+        // }
 
         values[msg.channel] = msg.value;
     });
