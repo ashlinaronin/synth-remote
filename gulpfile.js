@@ -12,7 +12,7 @@ var paths = {
     html: 'src/*.html',
     images: 'src/img/*.*',
     libScripts: [
-        'node_modules/socket.io-client/socket.io.js',
+        'node_modules/socket.io-client/dist/socket.io.js',
         'lib/noUiSlider.9.2.0/nouislider.js'
     ]
 };
