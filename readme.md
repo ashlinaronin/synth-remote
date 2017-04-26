@@ -9,3 +9,15 @@
 * run `npm start` to run the app. this will run three processes in parallel (`node index.js`, which is running the server; `gulp`, which is running the frontend; and `ngrok http 4005`, which with the current settings will expose your localhost port 4005 to the web at a new randomized address each time it runs)
 * connect to the frontend at the address ngrok dumps out in the console. if the connection between the frontend and server isn't working, try running ngrok http 5000 in a new tab to expose the server to the web, then change the URL on the first line of src/js/app.js to the URL ngrok has bestowed upon you
 * if you're still having issues, send ashlin a message
+
+
+
+* if using a yarns,
+make sure that layout is on 4M
+* set the parts to the correct midi channels (parts 1-4 corresponding to midi channels 1-4)--
+
+* go to Part, select 1, and exit the menu
+* go to Channel, select 1, and exit the menu
+* go to Part, select 2, and exit the menu
+* go to Channel, select 2, and exit the menu
+* repeat for parts 3 and 4
