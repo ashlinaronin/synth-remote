@@ -5,9 +5,6 @@ const midiConnector = require('./components/midi-connector');
 
 midiConnector.initInterface();
 
-app.get('/', (req, res) => {
-    res.send('<h1>Hello world</h1>');
-});
 
 io.on('connection', socket => {
     console.log('a user connected');
@@ -24,6 +21,6 @@ io.on('connection', socket => {
 });
 
 http.listen(5000, () => {
-    console.log('listening on *:3000');
+    console.log('listening on *:5000');
 });
 
