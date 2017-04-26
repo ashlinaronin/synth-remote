@@ -31,8 +31,12 @@ function onSliderUpdate(values) {
     socket.on('knob movement', msg => {
         const thisKnob = findChannelInput(msg.channel);
 
-        if ((thisKnob.value - msg.value) < 5) return;
-        thisKnob.value = msg.value;
+        const difference = thisKnob.noUiSlider.get() - msg.value;
+        console.log('difference', difference);
+
+        if (Math.abs(difference) > 5) return;
+        thisKnob.noUiSlider.set(msg.value);
+        console.log(`updated ${thisKnob.dataset.parameter} to ${msg.value}`);
     });
 }
 
