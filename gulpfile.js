@@ -12,7 +12,6 @@ var paths = {
     html: 'src/*.html',
     images: 'src/img/*.*',
     libScripts: [
-        'node_modules/osc/dist/osc-browser.js',
         'node_modules/socket.io-client/socket.io.js',
         'lib/noUiSlider.9.2.0/nouislider.js'
     ]
