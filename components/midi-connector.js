@@ -20,18 +20,15 @@ function initInterface() {
     const portCount = output.getPortCount();
 
     if (portCount > 0) {
-
         for (let i = 0; i < portCount; i++) {
             const portName = output.getPortName(i);
             console.log('found port ', portName);
 
-
-            output.openPort(i);
-            // output.openVirtualPort('test output');
-            console.log('connected to midi device', portName);
-
+            if (portName.indexOf('Through') === -1) {
+                output.openPort(i);
+                console.log('connected to midi device', portName);
+            }
         }
-
     }
 }
 
