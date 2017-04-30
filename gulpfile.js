@@ -150,6 +150,10 @@ var testLintOptions = {
     }
 };
 
+gulp.task('dev:rebuild-scripts-with-server-url', ['dev:main-scripts'], function() {
+   gulp.start('dev:server-url');
+});
+
 gulp.task('lint', lint('app/**/*.js'));
 
 gulp.task('lint:test', lint('test/spec/**/*.js', testLintOptions));
@@ -168,7 +172,7 @@ gulp.task('serve', ['dev:server-url'],
         );
 
         gulp.watch(paths.sass, ['dev:styles']);
-        gulp.watch(paths.mainScripts, ['dev:main-scripts']);
+        gulp.watch(paths.mainScripts, ['dev:rebuild-scripts-with-server-url']);
         gulp.watch(paths.images, ['dev:images']);
         gulp.watch(paths.html, ['dev:html']);
     });
