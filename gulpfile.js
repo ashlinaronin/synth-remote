@@ -121,8 +121,13 @@ gulp.task('dev:html', function() {
         .pipe(reload({stream: true}));
 });
 
-gulp.task('dev:server-url', function() {
-    return gulp.src('dist/js/app.js')
+gulp.task('dev:server-url', [
+        'dev:lib-scripts', 'dev:styles', 'dev:images',
+        'dev:main-scripts', 'dev:html'
+    ],
+
+    function() {
+        return gulp.src('dist/js/app.js')
         .pipe($.replace('@@apiBaseUrl', ip.address() + ':' + serverPort))
         .pipe(gulp.dest('dist/js'))
         .pipe(reload({stream: true}));
@@ -151,10 +156,7 @@ gulp.task('lint:test', lint('test/spec/**/*.js', testLintOptions));
 
 gulp.task('clean', del.bind(null, ['dist']));
 
-gulp.task('serve', [
-        'dev:lib-scripts', 'dev:styles', 'dev:images',
-        'dev:main-scripts', 'dev:html', 'dev:server-url'],
-
+gulp.task('serve', ['dev:server-url'],
         function() {
             browserSync({
                 notify: false,
