@@ -1,7 +1,9 @@
 const app = require('express')();
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
+const ip = require('ip');
 const midiConnector = require('./components/midi-connector');
+const serverPort = 5000;
 const interval = 100;
 let knobStates = [];
 let intervalId;
@@ -19,7 +21,7 @@ function initializeSocket(socket) {
 }
 
 function onSocketKnobMovement(msg) {
-    console.log('msg: ', msg);
+    console.log('msg from client: ', msg);
     midiConnector.playNote(parseInt(msg.channel), parseInt(msg.value));
     updateState(msg);
 }
@@ -50,7 +52,7 @@ function sendState() {
     io.emit('current knob state', knobStates);
 }
 
-http.listen(5000, () => {
-    console.log('listening on *:5000');
+http.listen(serverPort, () => {
+    console.log(`droneweb server running at ${ip.address()}:${serverPort}`);
 });
 
