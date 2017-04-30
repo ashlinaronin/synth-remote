@@ -11,9 +11,8 @@
 * if you're still having issues, send ashlin a message
 
 
-
-* if using a yarns,
-make sure that layout is on 4M
+*if using a yarns MIDI-CV interface*
+* make sure that layout is on 4M
 * set the parts to the correct midi channels (parts 1-4 corresponding to midi channels 1-4)--
 
 * go to Part, select 1, and exit the menu
