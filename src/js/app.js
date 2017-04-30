@@ -45,28 +45,21 @@ function onSliderUpdate(values) {
 function updateState(msg) {
     inputs.forEach(input => {
         let channel = input.dataset.channel;
-        if (typeof channel === 'undefined') {
-            console.log('input found without channel data attribute, skipping update...');
-            return;
-        }
 
-        if (!msg.hasOwnProperty(channel)) {
-            console.log('no state received for this input, skipping update...');
-            return;
-        }
+        // Don't update this input if the element does not have a channel data attribute
+        if (typeof channel === 'undefined') return;
 
+        // Don't update this input if the update state message doesn't contain a value for this channel
+        if (!msg.hasOwnProperty(channel)) return;
 
-        if (knobsInUse[channel]) {
-            console.log('this input is being used, skipping update...');
-            return;
-        }
+        // Don't update this input if this knob is currently being dragged
+        if (knobsInUse[channel]) return;
 
-        if (input.noUiSlider.get() === msg[channel]) {
-            console.log('value is unchanged, skipping update...');
-            return;
-        }
+        // Don't update this input if the value received from the server matches its current value
+        if (input.noUiSlider.get() === msg[channel]) return;
 
         input.noUiSlider.set(msg[channel]);
-        console.log(`updated ${input.dataset.parameter} to ${msg[channel]}`);
+
+        console.log(`updated ${input.dataset.parameter} to ${msg[channel]} from server state`);
     });
 }
