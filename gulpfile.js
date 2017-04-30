@@ -79,6 +79,7 @@ gulp.task('dev:lib-scripts', function(){
         .pipe($.plumber())
         .pipe($.sourcemaps.init())
         .pipe($.concat('lib.js'))
+        .pipe($.uglify())
         .pipe($.sourcemaps.write())
         .pipe(gulp.dest('dist/js'))
         .pipe(reload({stream: true}));
