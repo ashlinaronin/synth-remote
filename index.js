@@ -3,25 +3,26 @@ const http = require('http').Server(app);
 const io = require('socket.io')(http);
 const ip = require('ip');
 const midiConnector = require('./components/midi-connector');
+const appVersion = require('./package.json').version;
 const serverPort = 5000;
 const interval = 100;
 let knobStates = [];
 let intervalId;
 
-
+console.log(`starting up droneweb v${appVersion}`);
 midiConnector.initInterface();
 startSendingState();
 io.on('connection', initializeSocket);
 
 
 function initializeSocket(socket) {
-    console.log('a user connected');
+    console.log(`user ${socket.id} connected from ${socket.conn.remoteAddress}`);
     socket.on('knob movement', onSocketKnobMovement);
     socket.on('disconnect', onSocketDisconnect);
 }
 
 function onSocketKnobMovement(msg) {
-    console.log('msg from client: ', msg);
+    console.log(`msg from ${this.id}:`, msg);
     midiConnector.playNote(parseInt(msg.channel), parseInt(msg.value));
     updateState(msg);
 }

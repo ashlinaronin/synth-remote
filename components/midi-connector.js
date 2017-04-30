@@ -14,7 +14,7 @@ function playNote(channel, frequency, duration = 1000, velocity = 120) {
         output.sendMessage([channelNoteOff, frequency, velocity]);
     }, duration);
 
-    console.log(`played ${frequency} on channel ${channel} at ${velocity} for ${duration}`);
+    console.log(`played ${frequency} on MIDI channel ${channel} at ${velocity} for ${duration}ms`);
 }
 
 function initInterface() {
