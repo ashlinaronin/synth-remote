@@ -1,4 +1,5 @@
-const socket = io('localhost:5000');
+const apiBaseUrl = '@@apiBaseUrl';
+const socket = io(apiBaseUrl);
 const inputs = document.querySelectorAll('.cv');
 let knobsInUse = [];
 

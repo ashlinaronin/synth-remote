@@ -2,6 +2,9 @@ var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
 var browserSync = require('browser-sync');
 var del = require('del');
+var ip = require('ip');
+var serverPort = 5000;
+var frontendPort = 4005;
 
 var paths = {
     mainScripts: 'src/js/**/*.js',
@@ -14,6 +17,10 @@ var paths = {
     libScripts: [
         'node_modules/socket.io-client/dist/socket.io.js',
         'lib/noUiSlider.9.2.0/nouislider.js'
+    ],
+    replaceServerUrl: [
+        'dist/js/app.js',
+        'dist/index.html'
     ]
 };
 
@@ -108,9 +115,16 @@ gulp.task('prod:main-scripts', function() {
         .pipe(reload({stream: true}));
 });
 
-gulp.task('dev:html', function(){
+gulp.task('dev:html', function() {
     return gulp.src(paths.html)
         .pipe(gulp.dest('dist'))
+        .pipe(reload({stream: true}));
+});
+
+gulp.task('dev:server-url', function() {
+    return gulp.src('dist/js/app.js')
+        .pipe($.replace('@@apiBaseUrl', ip.address() + ':' + serverPort))
+        .pipe(gulp.dest('dist/js'))
         .pipe(reload({stream: true}));
 });
 
@@ -124,6 +138,7 @@ function lint(files, options) {
             .pipe($.if(!browserSync.active, $.eslint.failAfterError()));
     };
 }
+
 var testLintOptions = {
     env: {
         mocha: true
@@ -138,11 +153,12 @@ gulp.task('clean', del.bind(null, ['dist']));
 
 gulp.task('serve', [
         'dev:lib-scripts', 'dev:styles', 'dev:images',
-        'dev:main-scripts', 'dev:html'],
+        'dev:main-scripts', 'dev:html', 'dev:server-url'],
+
         function() {
             browserSync({
                 notify: false,
-                port: 4005,
+                port: frontendPort,
                 server: {
                     baseDir: ['dist']
                 }
@@ -155,9 +171,9 @@ gulp.task('serve', [
         gulp.watch(paths.html, ['dev:html']);
     });
 
-
 gulp.task('build', [], function(){
-    return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
+    return gulp.src('dist/**/*')
+        .pipe($.size({title: 'build', gzip: true}));
 });
 
 gulp.task('default', ['clean'], function(){

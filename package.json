@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.15.2",
+    "ip": "^1.1.5",
     "midi": "^0.9.5",
     "osc": "^2.2.0",
     "serialport": "^4.0.7",
@@ -38,6 +39,7 @@
     "gulp-imagemin": "^2.2.1",
     "gulp-load-plugins": "^0.10.0",
     "gulp-plumber": "^1.0.1",
+    "gulp-replace": "^0.5.4",
     "gulp-rollup": "^2.9.0",
     "gulp-sass": "^2.0.0",
     "gulp-size": "^1.2.1",
