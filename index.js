@@ -11,7 +11,7 @@ let intervalId;
 
 console.log(`starting up droneweb v${appVersion}`);
 midiConnector.initInterface();
-startSendingState();
+// startSendingState();
 io.on('connection', initializeSocket);
 
 
