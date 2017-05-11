@@ -12,6 +12,7 @@
   "dependencies": {
     "express": "^4.15.2",
     "ip": "^1.1.5",
+    "localtunnel": "^1.8.2",
     "midi": "^0.9.5",
     "osc": "^2.2.0",
     "serialport": "^4.0.7",

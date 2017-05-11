@@ -3,6 +3,7 @@ const http = require('http').Server(app);
 const io = require('socket.io')(http);
 const ip = require('ip');
 const midiConnector = require('./components/midi-connector');
+const tunnel = require('./components/tunnel');
 const appVersion = require('./package.json').version;
 const serverPort = 5000;
 const interval = 1000;
@@ -11,6 +12,7 @@ let intervalId;
 
 console.log(`starting up droneweb v${appVersion}`);
 midiConnector.initInterface();
+tunnel.setupTunnel('droneweb');
 // startSendingState();
 io.on('connection', initializeSocket);
 

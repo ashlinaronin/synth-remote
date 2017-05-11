@@ -3,7 +3,7 @@ var $ = require('gulp-load-plugins')();
 var browserSync = require('browser-sync');
 var del = require('del');
 var ip = require('ip');
-var apiBaseUrl = 'droneweb.pagekite.me';
+var apiBaseUrl = 'droneweb.localtunnel.me';
 var frontendPort = 4005;
 
 var paths = {
