@@ -2,11 +2,14 @@ body {
   font-family: monospace;
   display: flex;
   flex-direction: column;
+  background: black;
+  color: white;
 }
 
 h1 {
-  margin: 0 auto;
+  margin: 20px auto;
   text-align: center;
+  padding-bottom: 50px;
 }
 
 
@@ -27,6 +30,10 @@ h1 {
 
     .cv {
       flex: 2;
+    }
+
+    .noUi-connect {
+      background: #9e1f1f;
     }
 
   }
