@@ -23,7 +23,7 @@ function initInterface() {
     if (portCount > 0) {
         for (let i = 0; i < portCount; i++) {
             const portName = output.getPortName(i);
-            console.log('found first midi device:', portName);
+            console.log('found midi device:', portName);
 
             if (portName.indexOf(RPI_INVALID_MIDI_FRAGMENT) === -1) {
                 output.openPort(i);
