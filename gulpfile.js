@@ -3,7 +3,7 @@ var $ = require('gulp-load-plugins')();
 var browserSync = require('browser-sync');
 var del = require('del');
 var ip = require('ip');
-var serverPort = 5000;
+var apiBaseUrl = 'droneweb.pagekite.me';
 var frontendPort = 4005;
 
 var paths = {
@@ -129,7 +129,7 @@ gulp.task('dev:server-url', [
 
     function() {
         return gulp.src('dist/js/app.js')
-        .pipe($.replace('@@apiBaseUrl', ip.address() + ':' + serverPort))
+        .pipe($.replace('@@apiBaseUrl', apiBaseUrl))
         .pipe(gulp.dest('dist/js'))
         .pipe(reload({stream: true}));
 });
