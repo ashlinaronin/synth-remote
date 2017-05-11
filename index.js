@@ -5,7 +5,7 @@ const ip = require('ip');
 const midiConnector = require('./components/midi-connector');
 const appVersion = require('./package.json').version;
 const serverPort = 5000;
-const interval = 100;
+const interval = 1000;
 let knobStates = [];
 let intervalId;
 
