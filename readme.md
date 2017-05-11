@@ -9,7 +9,7 @@
 * run `npm start` to run the app. this will run three processes in parallel (`node index.js`, which is running the server; `gulp`, which is running the frontend; and `ngrok http 4005`, which with the current settings will expose your localhost port 4005 to the web at a new randomized address each time it runs)
 * connect to the frontend at the address ngrok dumps out in the console
 * if you're still having issues, send ashlin a message
-
+ 
 
 *if using a yarns MIDI-CV interface*
 * make sure that layout is on 4M
