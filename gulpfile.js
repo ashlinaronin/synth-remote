@@ -135,6 +135,19 @@ gulp.task('dev:server-url', [
 });
 
 
+gulp.task('prod:server-url', [
+        'prod:lib-scripts', 'dev:styles', 'dev:images',
+        'prod:main-scripts', 'dev:html'
+    ],
+
+    function() {
+        return gulp.src('dist/js/app.js')
+            .pipe($.replace('@@apiBaseUrl', apiBaseUrl))
+            .pipe(gulp.dest('dist/js'))
+            .pipe(reload({stream: true}));
+    });
+
+
 function lint(files, options) {
     return function(){
         return gulp.src(files)
@@ -187,4 +200,4 @@ gulp.task('default', ['clean'], function(){
     gulp.start('serve');
 });
 
-gulp.task('prod', ['prod:lib-scripts', 'dev:styles', 'dev:images', 'prod:main-scripts', 'dev:html']);
+gulp.task('prod', ['prod:server-url']);
