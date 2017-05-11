@@ -25,7 +25,7 @@ function initInterface() {
             const portName = output.getPortName(i);
             console.log('found first midi device:', portName);
 
-            if (portName.indexOf(RPI_INVALID_MIDI_FRAGMENT === -1)) {
+            if (portName.indexOf(RPI_INVALID_MIDI_FRAGMENT) === -1) {
                 output.openPort(i);
                 console.log('connected to midi device', portName);
                 return;
