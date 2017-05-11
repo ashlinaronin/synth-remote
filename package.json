@@ -10,6 +10,7 @@
   "author": "ashlin aronin",
   "license": "ISC",
   "dependencies": {
+    "debounce": "^1.0.2",
     "express": "^4.15.2",
     "ip": "^1.1.5",
     "localtunnel": "^1.8.2",

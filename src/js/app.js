@@ -4,7 +4,7 @@ const inputs = document.querySelectorAll('.cv');
 let knobsInUse = [];
 
 inputs.forEach(input => initializeSlider(input));
-// socket.on('current knob state', updateState);
+socket.on('current knob state', updateState);
 
 function initializeSlider(input) {
     noUiSlider.create(input, {

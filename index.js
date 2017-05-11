@@ -2,6 +2,7 @@ const app = require('express')();
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
 const ip = require('ip');
+const debounce = require('debounce');
 const midiConnector = require('./components/midi-connector');
 const tunnel = require('./components/tunnel');
 const appVersion = require('./package.json').version;
@@ -13,13 +14,13 @@ let intervalId;
 console.log(`starting up droneweb v${appVersion}`);
 midiConnector.initInterface();
 tunnel.setupTunnel('droneweb');
-// startSendingState();
+startSendingState();
 io.on('connection', initializeSocket);
 
 
 function initializeSocket(socket) {
     console.log(`user ${socket.id} connected from ${socket.conn.remoteAddress}`);
-    socket.on('knob movement', onSocketKnobMovement);
+    socket.on('knob movement', debounce(onSocketKnobMovement, 50));
     socket.on('disconnect', onSocketDisconnect);
 }
 
