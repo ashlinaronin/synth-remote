@@ -20,3 +20,12 @@
 * go to Part, select 2, and exit the menu
 * go to Channel, select 2, and exit the menu
 * repeat for parts 3 and 4
+
+
+TODO:
+* move message constants to a module/class
+* move settings to a separate module to allow
+    for dev/prod build configs
+* implement queue for clients to use the synth
+* pull in uws socket implementation / use with native WS on clientside for optimization
+* host localtunnel server to get around 10 max connections limitation or look into networking alternatives
