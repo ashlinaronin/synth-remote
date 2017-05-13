@@ -1,9 +1,20 @@
+$blood-red: #9e1f1f;
+
 body {
   font-family: monospace;
   display: flex;
   flex-direction: column;
   background: black;
   color: white;
+
+  &.error {
+    .connection-message {
+      display: block;
+    }
+    .controls {
+      display: none;
+    }
+  }
 }
 
 h1 {
@@ -12,15 +23,24 @@ h1 {
   padding-bottom: 50px;
 }
 
+.connection-message {
+  display: none;
+  color: $blood-red;
+}
+
 
 .controls {
   display: flex;
   flex-wrap: wrap;
   padding: 0;
 
+  &.error {
+    display: none;
+  }
+
   .control {
     flex: 1;
-    flex-basis: 300px;
+    flex-basis: 20px;
     padding: 20px;
     display: flex;
 
@@ -33,7 +53,7 @@ h1 {
     }
 
     .noUi-connect {
-      background: #9e1f1f;
+      background: $blood-red;
     }
 
   }

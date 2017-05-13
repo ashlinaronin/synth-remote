@@ -1,10 +1,14 @@
 const apiBaseUrl = '@@apiBaseUrl';
 const socket = io(apiBaseUrl);
 const inputs = document.querySelectorAll('.cv');
+const CONNECTION_LIMIT_REACHED = 'CONNECTION_LIMIT_REACHED';
 let knobsInUse = [];
 
 inputs.forEach(input => initializeSlider(input));
 socket.on('current knob state', updateState);
+socket.on(CONNECTION_LIMIT_REACHED, msg => {
+    document.querySelector('body').classList.add('error');
+});
 
 function initializeSlider(input) {
     noUiSlider.create(input, {

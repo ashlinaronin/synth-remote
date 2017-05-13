@@ -8,6 +8,8 @@ const tunnel = require('./components/tunnel');
 const appVersion = require('./package.json').version;
 const serverPort = 5000;
 const interval = 1000;
+const LOCALTUNNEL_CONN_LIMIT = 10;
+const CONNECTION_LIMIT_REACHED = 'CONNECTION_LIMIT_REACHED';
 let knobStates = [];
 let intervalId;
 
@@ -20,6 +22,12 @@ io.on('connection', initializeSocket);
 
 function initializeSocket(socket) {
     console.log(`user ${socket.id} connected from ${socket.conn.remoteAddress}`);
+    console.log('clients count', this.server.engine.clientsCount);
+
+    if (this.server.engine.clientsCount > LOCALTUNNEL_CONN_LIMIT) {
+        io.to(socket.id).emit('CONNECTION_LIMIT_REACHED');
+    }
+
     socket.on('knob movement', debounce(onSocketKnobMovement, 50));
     socket.on('disconnect', onSocketDisconnect);
 }
