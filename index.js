@@ -10,6 +10,7 @@ const serverPort = 5000;
 const interval = 1000;
 const LOCALTUNNEL_CONN_LIMIT = 10;
 const CONNECTION_LIMIT_REACHED = 'CONNECTION_LIMIT_REACHED';
+const USER_DISCONNECTED = 'USER_DISCONNECTED';
 let knobStates = [];
 let intervalId;
 
@@ -50,6 +51,7 @@ function updateState(knobMovementMessage) {
 
 function onSocketDisconnect() {
     console.log('user disconnected');
+    io.emit(USER_DISCONNECTED, this.server.engine.clientsCount);
 }
 
 function startSendingState() {

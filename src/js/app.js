@@ -2,12 +2,27 @@ const apiBaseUrl = '@@apiBaseUrl';
 const socket = io(apiBaseUrl);
 const inputs = document.querySelectorAll('.cv');
 const CONNECTION_LIMIT_REACHED = 'CONNECTION_LIMIT_REACHED';
+const USER_DISCONNECTED = 'USER_DISCONNECTED';
 let knobsInUse = [];
 
 inputs.forEach(input => initializeSlider(input));
 socket.on('current knob state', updateState);
 socket.on(CONNECTION_LIMIT_REACHED, msg => {
     document.querySelector('body').classList.add('error');
+});
+
+// Re-enable controls for this user if the total user count is now <=10.
+// This works, but isn't quite ideal logically because we are not
+// tracking who is actually active, but just who is connected
+// So theoretically there could be 15 users connected, 10 active
+// When one disconnects, you would expect one slot to be open
+// But currently that slot will not be freed until 5 users disconnect
+// and there are only 10 total users.
+// TODO: implement queue
+socket.on(USER_DISCONNECTED, userCount => {
+   if (userCount <= 10) {
+       document.querySelector('body').classList.remove('error');
+   }
 });
 
 function initializeSlider(input) {
