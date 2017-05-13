@@ -1,6 +1,6 @@
 {
   "name": "synth-remote",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "web interface to play a werkstatt in the synth library remotely",
   "main": "index.js",
   "scripts": {
