@@ -50,7 +50,7 @@ function updateState(knobMovementMessage) {
 }
 
 function onSocketDisconnect() {
-    console.log('user disconnected');
+    console.log('user disconnected, clients count', this.server.engine.clientsCount);
     io.emit(USER_DISCONNECTED, this.server.engine.clientsCount);
 }
 

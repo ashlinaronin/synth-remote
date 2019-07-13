@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# setup: sudo modprobe snd_pcm_oss
+# sudo apt-get install libav-tools (basically like ffmpeg for debian)
+#
+
+
 # from https://prupert.wordpress.com/2010/08/02/stream-live-audio-from-a-microphone-in-near-real-time-in-ubuntu/
 
 echo killing old ffmpegs
